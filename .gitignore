@@ -41,3 +41,7 @@ typings
 .idea
 .vscode
 *.iml
+
+#ts generated files.
+app/**/*.js
+app/**/*.map
