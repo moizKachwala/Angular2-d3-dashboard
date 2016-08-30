@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 @Component({
   selector: 'my-app',
-  templateUrl: './app/main.component.html' 
+  template: `
+            <bar-graph bind-data="graphData" width="200" height="150" >
+            </bar-graph>
+            ` 
 })
 export class AppComponent {
   graphData: Array<number>;
