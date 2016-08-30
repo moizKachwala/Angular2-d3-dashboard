@@ -19,7 +19,7 @@ export class BarGraph implements OnChanges {
     this.divs = graph
       .append('div')
       .attr({
-        'class': 'bar'
+        'class': 'chart'
       })
       .style({
         'width': width + 'px',
