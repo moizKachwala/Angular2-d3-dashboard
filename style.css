@@ -1,5 +1,5 @@
 .chart {
-  background: #eee;
+  background: #333333;
   padding: 3px;
 }
 
@@ -12,10 +12,10 @@
 
 .chart div {
   font: 10px sans-serif;
-  background-color: steelblue;
+  background-color: orange;
   text-align: right;
   padding: 3px;
   margin: 5px;
-  color: white;
-  box-shadow: 2px 2px 2px #666;
+  color: black;
+  box-shadow: 2px 2px 2px white;
 }
