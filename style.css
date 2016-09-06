@@ -1,25 +1,3 @@
-.chart {
-  background: #333333;
-  padding: 3px;
-}
-
-.chart div {
-  width: 0;
-  transition: all 1s ease-out;
-  -moz-transition: all 1s ease-out;
-  -webkit-transition: all 1s ease-out;
-}
-
-.chart div {
-  font: 10px sans-serif;
-  background-color: orange;
-  text-align: right;
-  padding: 3px;
-  margin: 5px;
-  color: black;
-  box-shadow: 2px 2px 2px white;
-}
-
 .bar {
   fill: steelblue;
 }
@@ -41,42 +19,4 @@
 
 .x.axis path {
   display: none;
-}
-
-:host {
-    width: 100%;
-    display:block;
-}
-:host .axis path,
-:host .axis line {
-    fill: none;
-    stroke: rgba(0, 0, 0, 0.2);
-    color: rgba(0, 0, 0, 0.2);
-    shape-rendering: crispEdges;
-}
-
-:host .axis text {
-    font-size: 11px;
-    fill: rgba(0, 0, 0, 0.9);
-}
-
-:host .grid .tick {
-    stroke: rgba(0, 0, 0, 0.1);
-    opacity: 0.3;
-}
-
-:host .grid path {
-    stroke-width: 0;
-}
-
-:host .grid .tick {
-    stroke: rgba(0, 0, 0, 0.1);
-    opacity: 0.3;
-}
-
-:host .grid path {
-    stroke-width: 0;
-}
-:host .color-label{
-    display: inline;
 }

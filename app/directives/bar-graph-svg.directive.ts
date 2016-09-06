@@ -33,9 +33,11 @@ export class BarGraphSvg implements OnChanges {
         if (!this.config || this.config.length === 0) return;
         this.setup();
         this.buildSVG();
-        this.populate();
+       
         this.drawXAxis();
         this.drawYAxis();
+        this.populate();
+     
     }
 
     /**
@@ -86,7 +88,7 @@ export class BarGraphSvg implements OnChanges {
     private drawYAxis(): void {
         this.yAxis = d3.svg.axis().scale(this.yScale)
             .orient('left')
-            .tickPadding(10);
+            .ticks(10, "%");
         this.svg.append('g')
             .attr('class', 'y axis')
             .call(this.yAxis)
@@ -110,18 +112,39 @@ export class BarGraphSvg implements OnChanges {
     * how the Area Chart is plotted.
     **/
     private populate(): void {
-        this.config.forEach((area: any) => {
-            this.xScale.domain(d3.extent(area.dataset, (d: any) => d.x));
-            this.yScale.domain([0, this.getMaxY()]);
-            this.svg.append('path')
+        this.config.forEach((area: AreaChartConfig) => {
+            // this.xScale.domain(d3.extent(area.dataset, (d: any) => d.x));
+            // this.yScale.domain([0, this.getMaxY()]);
+            // this.svg.append('path')
+            //     .datum(area.dataset)
+            //     .attr('class', 'bar')
+            //     .style('fill', area.settings.fill)
+            //     .attr('d', d3.svg.area()
+            //         .x((d: any) => this.xScale(d.x))
+            //         .y0(this.height)
+            //         .y1((d: any) => this.yScale(d.y))
+            //         .interpolate(area.settings.interpolation));
+        
+        this.xScale.domain(d3.extent(area.dataset, (d: any) => d.x));
+        this.yScale.domain([0, this.getMaxY()]);  
+         this.svg.append('rect')
                 .datum(area.dataset)
                 .attr('class', 'bar')
                 .style('fill', area.settings.fill)
                 .attr('d', d3.svg.area()
-                    .x((d: any) => this.xScale(d.x))
-                    .y0(this.height)
-                    .y1((d: any) => this.yScale(d.y))
-                    .interpolate(area.settings.interpolation));
+          .x((d: any) => this.xScale(d.x))
+          .y0(this.height)
+          .y1((d: any) => this.yScale(d.y))
+          .interpolate(area.settings.interpolation));
+
+        // this.svg.selectAll('.bar')
+        //     .data(area.dataset)
+        //      .enter().append("rect")
+        //     .attr("class", "bar")
+        //     .attr("x", function(d) { return this.xAxis(d.x); })
+        //     .attr("width", this.xAxis.rangeBand())
+        //     .attr("y", function(d) { return this.yAxis(d.y); })
+        //     .attr("height", function(d) { return this.height - this.yScale(d.y); });
         });
     }
 }
