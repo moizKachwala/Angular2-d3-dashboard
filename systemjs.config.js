@@ -26,7 +26,9 @@
 
       // other libraries
       'rxjs':                       'npm:rxjs',
-      'd3':                         'npm:d3/d3.min.js'
+      'd3':                         'npm:d3/d3.min.js',
+      'jquery':                     'npm:jquery/dist/jquery.min.js',
+      'bootstrap':                  'npm:bootstrap/dist/js/bootstrap.min.js'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -38,6 +40,12 @@
         defaultExtension: 'js'
       },
       d3: {
+        defaultExtension: 'js'
+      },
+      jquery: {
+        defaultExtension: 'js'
+      },
+      bootstrap: {
         defaultExtension: 'js'
       }
     }

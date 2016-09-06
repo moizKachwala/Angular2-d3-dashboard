@@ -7,17 +7,30 @@ import { BarChartConfig} from './directives/bar-chart/bar-chart-config';
 @Component({
   selector: 'my-app',
   template: `
-            <bar-chart [data]="graphData" [config]="graphConfig1" width="600" height="500">
-            </bar-chart>
+            <div class="row">
+             <div class="col-lg-12">
+                <h3 class="page-header">Angular2 D3 Bar chart</h3>
+            </div>
 
+            <div class="col-lg-12">
+              <bar-chart [data]="graphData" [config]="graphConfig1" width="600" height="500">
+              </bar-chart>
+            </div>
+           <div class="col-sm-3 col-xs-6">
             <bar-chart [data]="graphDataSmall" [config]="graphConfig1" width="250" height="250">
             </bar-chart>
-
+            </div>
+            <div class="col-sm-3 col-xs-6">
             <bar-chart [data]="graphDataSmall" [config]="graphConfig2" width="250" height="250">
             </bar-chart>
+            </div>
 
+              <div class="col-sm-3 col-xs-6">
              <bar-chart [data]="graphDataSmall" [config]="graphConfig3" width="250" height="250">
             </bar-chart>
+            </div>
+            <div>
+            </div>  
             `
 })
 

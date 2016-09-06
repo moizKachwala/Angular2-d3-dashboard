@@ -4,7 +4,7 @@
   <title>Angular 2 QuickStart</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
 
@@ -16,6 +16,10 @@
   <script src="node_modules/systemjs/dist/system.src.js"></script>
   <script src='node_modules/d3/d3.min.js'></script>
 
+  <!-- bootstrap -->
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
   <!-- 2. Configure SystemJS -->
   <script src="systemjs.config.js"></script>
   <script>
@@ -25,9 +29,41 @@
 <!-- 3. Display the application -->
 
 <body>
-  <div class="container">
-      <my-app>Loading...</my-app>
-  </div>
+  <header class="site-header" role="banner">
+    <div class="navbar-wrapper">
+      <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                     <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+          </button>
+            <a href="/" class="navbar-brand">
+              <img src="assets/images/logo.png" alt="Angular2 D3 charts">
+            </a>
+
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="active"><a href="/">Home</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <section>
+    <div class="container clearfix">
+      <div class="row">
+        <my-app>Loading...</my-app>
+      </div>
+    </div>
+  </section>
+  <footer>
+  </footer>
+
 </body>
 
 </html>
