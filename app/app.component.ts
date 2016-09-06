@@ -5,7 +5,7 @@ import {BARCHARTDATA} from './data/barChartData';
 @Component({
   selector: 'my-app',
   template: `
-            <bar-chart bind-data="graphData" width="400" height="400">
+            <bar-chart [data]="graphData" width="400" height="400">
             </bar-chart>
             `
 })

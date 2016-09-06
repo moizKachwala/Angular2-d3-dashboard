@@ -1,14 +1,14 @@
-import { Directive, ElementRef, Attribute, OnChanges } from '@angular/core';
+import { Directive, ElementRef, Attribute, OnChanges, Input } from '@angular/core';
 import {BarChartModel} from '../../model/barChartModel';
 import * as d3 from 'd3';
 
 @Directive({
-  selector: 'bar-chart',
-  properties: ['data']
+  selector: 'bar-chart'
+  //properties: ['data']
 })
 
 export class BarChart implements OnChanges {
-  private data: Array<BarChartModel>;
+  @Input('data') data: Array<BarChartModel>;
 
   private host;
   private svg;
