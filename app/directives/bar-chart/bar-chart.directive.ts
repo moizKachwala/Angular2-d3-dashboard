@@ -1,5 +1,6 @@
 import { Directive, ElementRef, Attribute, OnChanges, Input } from '@angular/core';
 import {BarChartModel} from '../../model/barChartModel';
+import { BarChartConfig } from './bar-chart-config'
 import * as d3 from 'd3';
 
 @Directive({
@@ -7,7 +8,8 @@ import * as d3 from 'd3';
 })
 
 export class BarChart implements OnChanges {
-  @Input('data') data: Array<BarChartModel>;
+  @Input() data: Array<BarChartModel>;
+  @Input() config: BarChartConfig;
 
   private host;
   private svg;
@@ -79,11 +81,13 @@ export class BarChart implements OnChanges {
 
     this.svg.append("g")
       .attr("class", "x axis")
+      .attr("fill", this.config.fill.text)
       .attr("transform", "translate(0," + this.height + ")")
       .call(this.xAxis);
 
     this.svg.append("g")
       .attr("class", "y axis")
+      .attr("fill", this.config.fill.text)
       .call(this.yAxis)
       .append("text")
       .attr("transform", "rotate(-90)")
@@ -95,7 +99,7 @@ export class BarChart implements OnChanges {
     this.svg.selectAll(".bar")
       .data(this.data)
       .enter().append("rect")
-      .attr("class", "bar")
+      .attr("fill", this.config.fill.bar)
       .attr("x", (d: BarChartModel) => this.x(d.letter))
       .attr("width", this.x.rangeBand())
       .attr("y", (d: BarChartModel) => this.y(d.frequency))

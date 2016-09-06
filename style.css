@@ -2,22 +2,6 @@ svg {
   background-color: #333333;
 }
 
-text {
-  fill: whitesmoke;
-}
-
-line {
-  fill: whitesmoke;
-}
-
-.bar {
-  fill: orange;
-}
-
-.bar:hover {
-  fill: darkorange;
-}
-
 .axis {
   font: 10px sans-serif;
 }
