@@ -1,9 +1,21 @@
+svg {
+  background-color: #333333;
+}
+
+text {
+  fill: whitesmoke;
+}
+
+line {
+  fill: whitesmoke;
+}
+
 .bar {
-  fill: steelblue;
+  fill: orange;
 }
 
 .bar:hover {
-  fill: brown;
+  fill: darkorange;
 }
 
 .axis {
@@ -13,7 +25,7 @@
 .axis path,
 .axis line {
   fill: none;
-  stroke: #000;
+  stroke: #CCC;
   shape-rendering: crispEdges;
 }
 

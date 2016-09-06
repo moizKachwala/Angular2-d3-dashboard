@@ -4,7 +4,6 @@ import * as d3 from 'd3';
 
 @Directive({
   selector: 'bar-chart'
-  //properties: ['data']
 })
 
 export class BarChart implements OnChanges {
