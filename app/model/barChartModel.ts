@@ -1,4 +1,4 @@
-export class BarChartData {
+export class BarChartModel {
     letter: string;
     frequency: number;
 }

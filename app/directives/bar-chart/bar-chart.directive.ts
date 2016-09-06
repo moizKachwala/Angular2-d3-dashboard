@@ -1,20 +1,20 @@
-import { Directive, ElementRef, Renderer, Attribute, SimpleChange, OnChanges } from '@angular/core';
+import { Directive, ElementRef, Attribute, OnChanges } from '@angular/core';
+import {BarChartModel} from '../../model/barChartModel';
 import * as d3 from 'd3';
 
 @Directive({
-  selector: 'bar-chart-simple',
+  selector: 'bar-chart',
   properties: ['data']
 })
 
-export class BarGraphSimple implements OnChanges {
-  private data: Array<number>;
+export class BarChart implements OnChanges {
+  private data: Array<BarChartModel>;
 
   private host;
   private svg;
   private margin;
   private width;
   private height;
-  private barHeight = 20;
   private x;
   private y;
   private xAxis;
@@ -45,21 +45,21 @@ export class BarGraphSimple implements OnChanges {
 
   private drawXAxis(): void {
     this.x = d3.scale.ordinal()
-        .rangeRoundBands([0, this.width], .1);
+      .rangeRoundBands([0, this.width], .1);
 
     this.xAxis = d3.svg.axis()
-            .scale(this.x)
-          .orient("bottom");
+      .scale(this.x)
+      .orient("bottom");
   }
 
   private drawYAxis(): void {
     this.y = d3.scale.linear()
-    .range([this.height, 0]);
+      .range([this.height, 0]);
 
     this.yAxis = d3.svg.axis()
-          .scale(this.y)
-          .orient("left")
-          .tickPadding(10);
+      .scale(this.y)
+      .orient("left")
+      .tickPadding(10);
   }
 
   private buildSvg(): void {
@@ -75,15 +75,15 @@ export class BarGraphSimple implements OnChanges {
 
   private populate(): void {
 
-    this.x.domain(this.data.map(function(d) { return d; }));
-    this.y.domain([0, d3.max(this.data, function(d) { return d; })]);
+    this.x.domain(this.data.map(function (d: BarChartModel) { return d.letter; }));
+    this.y.domain([0, d3.max(this.data, function (d: BarChartModel) { return d.frequency; })]);
 
     this.svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + this.height + ")")
       .call(this.xAxis);
 
-      this.svg.append("g")
+    this.svg.append("g")
       .attr("class", "y axis")
       .call(this.yAxis)
       .append("text")
@@ -93,30 +93,14 @@ export class BarGraphSimple implements OnChanges {
       .style("text-anchor", "end")
       .text("Frequency");
 
-      this.svg.selectAll(".bar")
+    this.svg.selectAll(".bar")
       .data(this.data)
-    .enter().append("rect")
+      .enter().append("rect")
       .attr("class", "bar")
-      .attr("x", (d:any) => this.x(d))
+      .attr("x", (d: BarChartModel) => this.x(d.letter))
       .attr("width", this.x.rangeBand())
-      .attr("y", (d:any) => this.y(d))
-      .attr("height",  (d:any) => this.height - this.y(d));
-
-    // var bar = this.svg.selectAll("g")
-    //   .data(this.data)
-    //   .enter().append("g")
-    //   .attr("transform", ((d: any, i: number) => "translate(0," + i * this.barHeight + ")"));
-
-    // bar.append("rect")
-    //   .attr("width", this.x)
-    //   .attr("height", this.barHeight - 1);
-
-    // bar.append("text")
-    //   .attr("x", ((d: any) => this.x(d) - 3))
-    //   .attr("y", this.barHeight / 2)
-    //   .attr("dy", ".35em")
-    //   .text((d: any) => d);
-
+      .attr("y", (d: BarChartModel) => this.y(d.frequency))
+      .attr("height", (d: BarChartModel) => this.height - this.y(d.frequency));
   }
 
 }
