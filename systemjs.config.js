@@ -26,7 +26,7 @@
 
       // other libraries
       'rxjs':                       'npm:rxjs',
-      'd3':                         'npm:d3/d3.min.js',
+      'd3':                         'npm:d3/build/d3.min.js',
       'jquery':                     'npm:jquery/dist/jquery.min.js',
       'jquery-ui':                  'assets/js/jquery-ui-min.js',
       'bootstrap':                  'npm:bootstrap/dist/js/bootstrap.min.js'

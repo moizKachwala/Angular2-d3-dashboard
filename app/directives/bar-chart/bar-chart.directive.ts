@@ -45,22 +45,19 @@ export class BarChart implements OnChanges {
   }
 
   private drawXAxis(): void {
-    this.x = d3.scale.ordinal()
-      .rangeRoundBands([0, this.width], .1);
+    this.x = d3.scaleBand()
+      .range([0, this.width])
+      .padding(0.1);
 
-    this.xAxis = d3.svg.axis()
-      .scale(this.x)
-      .orient("bottom");
+    this.xAxis = d3.axisBottom(this.x);    
   }
 
   private drawYAxis(): void {
-    this.y = d3.scale.linear()
+    this.y = d3.scaleLinear()
       .range([this.height, 0]);
 
-    this.yAxis = d3.svg.axis()
-      .scale(this.y)
-      .orient("left")
-      .tickPadding(10);
+    this.yAxis = d3.axisLeft(this.y)
+    .tickPadding(10);
   }
 
   private buildSvg(): void {
@@ -80,14 +77,14 @@ export class BarChart implements OnChanges {
     this.y.domain([0, d3.max(this.data, function (d: BarChartModel) { return d.frequency; })]);
 
     this.svg.append("g")
-      .attr("class", "x axis")
-      .attr("fill", this.config.fill.text)
+      //.attr("class", "x axis")
+      //.attr("fill", this.config.fill.text)
       .attr("transform", "translate(0," + this.height + ")")
       .call(this.xAxis);
 
     this.svg.append("g")
-      .attr("class", "y axis")
-      .attr("fill", this.config.fill.text)
+      // .attr("class", "y axis")
+      //.attr("fill", this.config.fill.text)
       .call(this.yAxis)
       .append("text")
       .attr("transform", "rotate(-90)")
@@ -101,9 +98,8 @@ export class BarChart implements OnChanges {
       .enter().append("rect")
       .attr("fill", this.config.fill.bar)
       .attr("x", (d: BarChartModel) => this.x(d.letter))
-      .attr("width", this.x.rangeBand())
       .attr("y", (d: BarChartModel) => this.y(d.frequency))
+      .attr("width", this.x.bandwidth())
       .attr("height", (d: BarChartModel) => this.height - this.y(d.frequency));
   }
-
 }
